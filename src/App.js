@@ -44,7 +44,7 @@
 
 
 
-
+import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Notes from "./components/Notess"
@@ -54,7 +54,19 @@ import Dialog from "./components/Dialog"
 import ShoppingList from './component1/ShoppingList';
 import Section from './component2/Section';
 import Recoder from './components/Recoder';
+import Speaking from './component4/Speaking';
 function App() {
+  const [fScreen,setFScreen] = useState(0);
+    document.addEventListener("dblclick",()=>{
+        if(fScreen==0){
+            document.body.requestFullscreen();
+            setFScreen(1);
+        }
+        else{
+            document.exitFullscreen();
+            setFScreen();
+        }
+    })
   return (
     // <Recoder/>
     // <Section />
@@ -66,6 +78,7 @@ function App() {
         <Route path="/home" element={<Home />}></Route>
       </Routes>
     </BrowserRouter>
+    // <Speaking/>
   );
 }
 export default App;

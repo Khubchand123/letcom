@@ -36,9 +36,11 @@ class Recoder extends React.Component {
         const { isLoading, isRecording, recordings } = this.state;
         return (
             <React.Fragment>
+                <div className=''>
                 <img src="https://w7.pngwing.com/pngs/720/660/png-transparent-google-assistant-brand-google-search-google-chrome-google-logo-color-android.png" alt="" style={{width:"70px"}} disabled={isLoading} onClick={this.record}></img>
-                <div className="my-3" style={{marginLeft:"-103px"}}>
+                <div className="my-3 rec" style={{marginLeft:"-100px"}}>
                         {recordings!=null&&<audio src={recordings} controls />}
+                </div>
                 </div>
             </React.Fragment>
         );

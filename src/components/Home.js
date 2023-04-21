@@ -10,14 +10,23 @@ const Home = () => {
     // const location = useLocation()
     const data = sdata;
     const [id, setid] = useState(1);
-//     let yellow = '#ffc800';
-//   const [bgColor, setBgColor] = useState(yellow);
-//    const changeColor =()=>{
-//       let purple = '#A020F0';
-//       setBgColor(purple);
-//     }
+    const [cid, setcid] = useState('A');
+    const [colorB, setColorB] = useState('');
+    const [colorC, setColorC] = useState('');
+    // const [fScreen,setFScreen] = useState(0);
+    // document.addEventListener("dblclick",()=>{
+    //     if(fScreen==0){
+    //         document.body.requestFullscreen();
+    //         setFScreen(1);
+    //     }
+    //     else{
+    //         document.exitFullscreen();
+    //         setFScreen();
+    //     }
+    // })
     return (
-        <div className='d-flex' style={{ background: "" }}>
+        
+        <div className='d-flex' style={{ backgroundImage: "linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%)" }}>
             <div style={{ overflow: "scroll", width: "21rem", height: "100vh", backgroundColor: "red" }}>
                 {
                     data.map(
@@ -35,14 +44,14 @@ const Home = () => {
             </div>
             <div>
                 <div className='d-flex' >
-                    <img src={require(`../imagesin/${id}A.jpg`)} alt="" style={{ width: "130px", height: "160px" }} />
+                    <img className='my-3 mx-3'src={require(`../imagesin/${id}A.jpg`)} alt="" style={{ width: "130px", height: "160px" }} />
                     <div>
                         <div style={{ marginTop: "25px", marginLeft: "18px" }}>
                             <h4>{data[id - 1].atopic}</h4>
 
                             <h5>{data[id - 1].btopic}</h5>
                         </div>
-                        <audio src={require(`../audio/${id}A.mp3`)} controls style={{ marginLeft: "15px" }}></audio>
+                        <audio className='my-3' src={require(`../audio/${id}${id == 1 ? cid : 'A'}.mp3`)} controls style={{ marginLeft: "15px" }}></audio>
                     </div>
                     <div style={{ marginLeft: "200px", marginTop: "20px" }}>
 
@@ -56,12 +65,30 @@ const Home = () => {
 
                         <Dialog id={id} />
                     </div>
-                    <div style={{marginLeft:"9vw",marginTop:"30vh"}}>
-                        <Recoder />
+                    <div>
+                        <div style={{ marginLeft: "75px", marginTop: "15vh", textAlign: "center",background:"lightyellow" }}>
+                            <div>
+                                FOR PRACTICE
+                            </div>
+                            <div className='my-3'>
+                                Choose Your Partner
+                            </div>
+                            <div className='my-3'>
+                                <button className='mx-3' onClick={() => { setcid('B'); setColorB('red'); setColorC('') }} style={{ background: colorB }}>CATHY</button>
+                                <button className='mx-3' onClick={() => { setcid('C'); setColorC('red'); setColorB('') }} style={{ background: colorC }}>MOM</button>
+                            </div>
+                            <div>
+                                <button className='my-3' onClick={() => { setcid('A'); setColorC(''); setColorB('') }}>REFRESH</button>
+                            </div>
+                        </div>
+                        <div className='my-3' style={{ marginLeft: "130px",position:"absolute" }}>
+                            <Recoder />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
     )
 }
